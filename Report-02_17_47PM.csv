@@ -1,0 +1,10 @@
+File Name,Line Number,Line Content,Keyword Identified
+D:\RND\Staging30\Web\saml.config,7,"      <Certificate FileName=""Certificates\wildcard_abc_com.pfx"" Password=""XYZ"" />","Password=""XYZ"""
+D:\RND\Staging30\Web\saml.config,14,"      <Certificate FileName=""Certificates\wildcard_abc_com.pfx"" Password=""XYZ"" />","Password=""XYZ"""
+D:\RND\Staging30\Web\web.config,210,"        <!--<network defaultCredentials=""false"" host=""smtp.sendgrid.net"" port=""587"" userName=""abhishek"" password=""DummyPWD""/>-->","password=""XYZ"""
+D:\RND\Staging30\Web\web.config,211,"        <network defaultCredentials=""false"" host=""smtp.sendgrid.net"" port=""587"" userName=""apikey"" password=""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"" />","password=""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"""
+D:\RND\Staging30\Web\App_Code\DocuSignHelper.cs,353,"            + this.Username + ""&password="" + HttpUtility.UrlEncode(this.Password) + ""&scope=api"";","password="" + HttpUtility.UrlEncode(this.Password) + ""&scope=api"""
+D:\RND\Staging30\Web\App_Code\DocuSignHelper.cs,354,"//        +HttpUtility.UrlEncode(this.Username) + ""&password="" + HttpUtility.UrlEncode(this.Password) + ""&scope=api"";","password="" + HttpUtility.UrlEncode(this.Password) + ""&scope=api"""
+D:\RND\Staging30\Web\App_Code\Messages.cs,35,"        public const string InvalidUsernameOrPassword = ""25"";","Password = ""25"""
+D:\RND\Staging30\Web\App_Code\Messages.cs,151,"        public const string LogonInvalidUNPWD = ""LogUNPWD"";","PWD = ""LogUNPWD"""
+D:\RND\Staging30\Web\App_Code\SessionHelper.cs,1261,"            public const string SetInitialPassword = ""3"";","Password = ""3"""
