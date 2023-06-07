@@ -34,3 +34,7 @@ inc/
 /pm_to_blib
 /*.zip
 /.vs
+/AppScan.Utility/bin/Debug
+/AppScan.Utility/obj/Debug
+/packages
+/AppScan.Utility/AppScan.Utility.csproj.user

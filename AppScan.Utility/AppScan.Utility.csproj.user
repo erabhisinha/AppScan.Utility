@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>"%28pwd%28\s%29%2a%28=%29{1}%28\s%29%2a%28\""|\%27%29.%2a%28\""|\%27%29%29|%28password%28\s%29%2a%28=%29{1}%28\s%29%2a%28\""|\%27%29.%2a%28\""|\%27%29%29" "C:\Users\A153823\source\repos\SourceCode\AppScan.Utility-main" "C:\Users\A153823\source\repos\Report" "%2a.cs,%2a.config" "C:\Users\A153823\source\repos\Report\ExclusionList.csv"</StartArguments>
-  </PropertyGroup>
-</Project>
