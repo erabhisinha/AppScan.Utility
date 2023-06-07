@@ -14,6 +14,7 @@ namespace AppScan.Utility
         private static ILogger _logger = null;
         private static LoggerConfiguration _loggerConfiguration = null;
         private string pwd = "Password For SQL DB";
+        private string connpwd = "Dummy Pwd for Conn Str";
 
         static void Main(string[] args)
         {
@@ -73,6 +74,7 @@ namespace AppScan.Utility
         }
         static void Scan(string expression, string folderPath, string outputPath, string[] fileExtensionsToScan, FalsePositives exclusions)
         {
+            //expression = @"(.*pwd(\s)*(=){1}(\s)*(\""|\').*(\""|\'))|(.*password(\s)*(=){1}(\s)*(\""|\').*(\""|\'))";
             //string expression1 = @"(pwd(\s)*(=){1}(\s)*(\""|\').*(\""|\'))|(password(\s)*(=){1}(\s)*(\""|\').*(\""|\'))";
             Regex pwdReg = new Regex(expression, RegexOptions.IgnoreCase);
             DirectoryInfo directoryInfo = new DirectoryInfo(folderPath);
@@ -116,7 +118,7 @@ namespace AppScan.Utility
                 reportBuilder.AppendLine(info.ToCSV());
                 _logger.Information("{@object}", info);
             }
-            File.WriteAllText($"{outputPath}\\Report-{DateTime.Now.ToString("hh_mm_ss_tt")}.csv", reportBuilder.ToString());
+            File.WriteAllText($"{outputPath}\\Report-{DateTime.Now.ToString("dd-MMM-yyyy-hh-mm-ss-tt")}.csv", reportBuilder.ToString());
             Console.ReadLine();
         }
         private static int LineFromPos(string input, int indexPosition)
