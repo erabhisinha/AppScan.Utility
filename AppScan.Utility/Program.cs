@@ -43,6 +43,9 @@ namespace AppScan.Utility
             }
             else
             {
+                Console.WriteLine(Constants.WarningConstants.Invalid_Input_Parameter_Counts);
+                _logger.Warning(Constants.WarningConstants.Invalid_Input_Parameter_Counts);
+                /*
                 string reg = @"(pwd(\s)*(=){1}(\s)*(\""|\').*(\""|\'))|(password(\s)*(=){1}(\s)*(\""|\').*(\""|\'))";
                 string dirPath = "C:\\Users\\A153823\\source\\repos\\SourceCode\\AppScan.Utility-main";
                 string reportPath = "C:\\Users\\A153823\\source\\repos\\Report";
@@ -57,6 +60,7 @@ namespace AppScan.Utility
                 _logger.Warning(messageBuilder.ToString());
                 Console.WriteLine(messageBuilder.ToString());
                 Console.ReadLine();
+                */
             }
         }
         private static void InitializeLogger(string[] args)
