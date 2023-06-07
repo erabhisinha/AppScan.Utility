@@ -4,6 +4,7 @@ namespace AppScan.Utility.Models
 {
     public class SensitiveContentInfo
     {
+        private const string csvDelimiter = "\t";
         public string FileName { get; set; }
         public string KeywordIdentified { get; set; }
         public int LineNumber { get; set; }
@@ -16,7 +17,7 @@ namespace AppScan.Utility.Models
 
         public string ToCSV()
         {
-            return $"{FileName}\t{LineNumber}\t{LineContent}\t{KeywordIdentified}";
+            return $"{FileName}{csvDelimiter}{LineNumber}{csvDelimiter}{LineContent.SanitizedForCSV(csvDelimiter)}{csvDelimiter}{KeywordIdentified.SanitizedForCSV(csvDelimiter)}";
         }
     }
 }
