@@ -68,14 +68,53 @@ namespace AppScan.Utility
         {
             if (args?.Count() > 1)
             {
-                _loggerConfiguration = _loggerConfiguration.WriteTo.File($"{args[2]}/appscan.txt");
+                string loggerFileName = $"appScanLog-{DateTime.Today.ToString("dd-MMM-yyyy")}.txt";
+                _loggerConfiguration = _loggerConfiguration.WriteTo.File($"{args[2]}/{loggerFileName}");
             }
             _logger = _loggerConfiguration.CreateLogger();
         }
         static void Scan(string expression, string folderPath, string outputPath, string[] fileExtensionsToScan, FalsePositives exclusions)
         {
-            //expression = @"(.*pwd(\s)*(=){1}(\s)*(\""|\').*(\""|\'))|(.*password(\s)*(=){1}(\s)*(\""|\').*(\""|\'))";
+            //expression = @"(.*pwd(\s)*(=){1}(\s)*(\""|\').*(\""|\'))|(.*password(\s)*(=){1}(\s)*(\""|\').*(\""|\'))|(.*password(\s)*(\""|\').*(\""|\'))|(.*pwd(\s)*(\""|\').*(\""|\'))";
+            //expression = @"(.*password(\s)*(\""|\').*(\""|\'))";
             //string expression1 = @"(pwd(\s)*(=){1}(\s)*(\""|\').*(\""|\'))|(password(\s)*(=){1}(\s)*(\""|\').*(\""|\'))";
+
+
+
+            /* (.*pwd(\s)*(=){1}(\s)*(\""|\').*(\""|\')) - Used to find the sensitive information in code based files
+             * .* - Zero OR More occurences of any characters
+             * pwd - contains term pwd
+             * (\s)* - Zero OR more occurences of spaces
+             * (=){1} - Exact one Occurence of equal to sign
+             * (\s)* - Zero OR more occurences of spaces
+             * (\""|\') - Should have a doubt quote "" OR a single quote '
+             * .* - Zero OR More occurences of any characters
+             *  (\""|\') - Should have a doubt quote "" OR a single quote '
+             *  Example: pwd = "My Dummy Password"; pwd= 'Any clear text password' etc.
+             */
+
+            /* (.*password(\s)*(=){1}(\s)*(\""|\').*(\""|\')) - Used to find the sensitive information in code OR config files 
+             * .* - Zero OR More occurences of any characters
+             * password - contains term pwd
+             * (\s)* - Zero OR more occurences of spaces
+             * (=){1} - Exact one Occurence of equal to sign
+             * (\s)* - Zero OR more occurences of spaces
+             * (\""|\') - Should have a doubt quote "" OR a single quote '
+             * .* - Zero OR More occurences of any characters
+             *  (\""|\') - Should have a doubt quote "" OR a single quote '
+             *  Example: password = "My Dummy Password"; password= 'Any clear text password' etc.
+             */
+
+            /* (.*password(\s)*(\""|\').*(\""|\')) - Used to find the sensitive information in configuration files
+             * .* - Zero OR More occurences of any characters
+             * password - contains term pwd
+             * (\s)* - Zero OR more occurences of spaces
+             * (\""|\') - Should have a doubt quote "" OR a single quote '
+             * .* - Zero OR More occurences of any characters
+             *  (\""|\') - Should have a doubt quote "" OR a single quote '
+             *  Example: <add key="dummyUserPwd" value="MyClearTextPassword"/>
+             */
+
             Regex pwdReg = new Regex(expression, RegexOptions.IgnoreCase);
             DirectoryInfo directoryInfo = new DirectoryInfo(folderPath);
             List<SensitiveContentInfo> sensitiveContents = new List<SensitiveContentInfo>();
