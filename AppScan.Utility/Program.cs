@@ -11,6 +11,7 @@ namespace AppScan.Utility
 {
     class Program
     {
+        //---Changes as on 09/June/2024
         private static ILogger _logger = null;
         private static LoggerConfiguration _loggerConfiguration = null;
         private string pwd = "Password For SQL DB";
